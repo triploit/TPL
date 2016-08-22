@@ -1,3 +1,6 @@
+#ifndef A1Z26_H
+#define A1Z26_H
+
 #include <stdio.h>
 
 int print_char(int i)
@@ -247,3 +250,5 @@ int print_char(int i)
 
   return 0;
 }
+
+#endif

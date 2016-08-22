@@ -2,11 +2,9 @@
 #define OUTE
 
 #include <iostream>
+#include "valS.h"
 using namespace std;
 
-void out(string arg1, string arg2)
-{
-  printf("OUT gefunden!\n");
-}
+void outf(string arg1, string arg2);
 
 #endif
