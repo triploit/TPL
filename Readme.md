@@ -153,13 +153,21 @@ Die If-Anweisung müsste jeder Programmierer kennen. Hier ist sie etwas anders:
 
     eq zelle1=zelle2,punkt;
 
-Überprüft ob der Wert von Zelle1, dem Wert von Zelle2 entspricht, wenn dies der Fall ist, springt der Interpreter zu dem Punkt "punkt".
+Das überprüft ob der Wert von Zelle1, dem Wert von Zelle2 entspricht, wenn dies der Fall ist, springt der Interpreter zu dem Punkt "punkt".
 
     eq zelle1!zelle2,punkt;
 
 Überprüft ob der Wert von Zelle1, **nicht** dem von Zelle2 entspricht, wenn dies der Fall ist, springt der Interpreter zu dem Punkt "punkt".
 
 **Der Unterschied dabei ist:** zwischen den Zellen steht entweder ein "=" oder ein "!". Das "!" steht für ungleichheit, das "=" für gleichheit.
+
+Um zu Testen ob das erste Objekt größer als das andere ist, tun wir dies:
+
+    eq zelle1>zelle2,punkt;
+
+Und wenn es genau andersherum ist:
+
+    eq zelle1<zelle2,punkt;
 
 Beispiel Integer:
 
@@ -175,6 +183,8 @@ Beim String ist es das gleiche, es gibt keinen Unterschied:
       mov "11",~sa;
       add "1",~sb;
       eq ~sa!~sb,main;
+
+Statt einem "!", kann aber natürlich auch ein "=" für Gleichheit, ein "<" um zu testen ob das erste Objekt kleiner und ein ">" um zu testen ob das erste Objekt größer ist.
 
 ###**Das Dateisystem**
 

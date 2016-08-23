@@ -1,9 +1,19 @@
-[use]out
-[use]in;
+[use] out
+[use] in;
+[use] os;
 
-do in,+id;
+{init}
+  mov   9,+ie;
+  mov   "Gib$eine$Zahl$ein:$",~sa;
+  do    out,~sa;
+  do    in,+id;
+  eq    +id<+ie,main;
+  eq    +id=+ie,exit;
+  eq    +id>+ie,exit;
+  end;
 
 {main}
+
   do    out,endline;
   mov   IA:$,~sa;
   mov   IB:$,~sb;
@@ -30,5 +40,11 @@ do in,+id;
 {ja}
   mov   "IB$ist$so$groß$wie$IA!",~sd;
   do    out,~sd;
+  do    out,endline;
+  end;
+
+{exit}
+  mov   "Eingabe$zu$groß!",~sa;
+  do    out,~sa;
   do    out,endline;
   end;

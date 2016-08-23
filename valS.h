@@ -200,6 +200,8 @@ void eqf(string arg1, string arg2)
   int iar2 = 0;
 
   bool notf = false;
+  bool gr = false;
+  bool kl = false;
 
   string sar1 = "0";
   string sar2 = "0";
@@ -220,6 +222,32 @@ void eqf(string arg1, string arg2)
 
     iar1 = 0;
     iar2 = 1;
+  }
+  else if (arg1.find("<") != string::npos)
+  {
+    sarg = split(arg1, '<');
+    kl = true;
+
+    sar1 = "e";
+    sar2 = "ea";
+
+    iar1 = 1;
+    iar2 = 2;
+  }
+  else if (arg1.find(">") != string::npos)
+  {
+    sarg = split(arg1, '>');
+    gr = true;
+
+    sar1 = "ea";
+    sar2 = "e";
+
+    iar1 = 2;
+    iar2 = 1;
+  }
+  else
+  {
+    printf("[ ERR ] Ungültiger Ausdruck in %s! (EQ) \n[ SYS ] Bekannte Ausdrücke: < > ! = (EQ)", arg1.c_str());
   }
 
   if (sarg[0] == iai)
@@ -269,11 +297,35 @@ void eqf(string arg1, string arg2)
     if (sar1 != sar2 && iar1 != iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE (EQ)");
+      //printf("[ SYS ] TRUE (EQ)\n");
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)");
+      //printf("[ SYS ] FALSE (EQ)\n");
+    }
+  }
+  else if (gr)
+  {
+    if (sar1 > sar2 && iar1 > iar2)
+    {
+      gotof(arg2);
+      //printf("[ SYS ] TRUE %d %d GRÖßER(EQ)\n", iar1, iar2);
+    }
+    else
+    {
+      //printf("[ SYS ] FALSE GRÖßER (EQ)\n");
+    }
+  }
+  else if (kl)
+  {
+    if (sar1 < sar2 && iar1 < iar2)
+    {
+      gotof(arg2);
+      //printf("[ SYS ] TRUE %d %d (EQ)\n", iar1, iar2);
+    }
+    else
+    {
+      //printf("[ SYS ] FALSE (EQ)\n");
     }
   }
   else
@@ -281,11 +333,11 @@ void eqf(string arg1, string arg2)
     if (sar1 == sar2 && iar1 == iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE (EQ)");
+      //printf("[ SYS ] TRUE (EQ)\n");
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)");
+      //printf("[ SYS ] FALSE (EQ)\n");
     }
   }
 
