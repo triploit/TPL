@@ -10,6 +10,9 @@ bool out;
 bool in;
 bool filef;
 bool math;
+bool osf;
+bool timef;
+
 int lasti;
 
 void setI(int i);
@@ -193,6 +196,25 @@ public:
       }
     }
   }
+
+string getOsName()
+{
+    #ifdef _WIN32
+    return "Windows32";
+    #elif _WIN64
+    return "Windows64";
+    #elif __unix || __unix__
+    return "Unix";
+    #elif __APPLE__ || __MACH__
+    return "MacOSX";
+    #elif __linux__
+    return "Linux";
+    #elif __FreeBSD__
+    return "FreeBSD";
+    #else
+    return "Other";
+    #endif
+}
 } System;
 
 void mov(string arg1, string arg2)
@@ -226,6 +248,8 @@ void mov(string arg1, string arg2)
           val = sd;
         else if (arg1 == sei)
           val = se;
+        else if (arg1 == fos && osf == true)
+          val = System.getOsName();
         else
           val = arg1;
 

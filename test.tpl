@@ -1,5 +1,6 @@
 [use] out;
 [use] in;
+[use] os;
 
 {main}
   do    out,endline;

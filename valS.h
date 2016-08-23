@@ -2,8 +2,14 @@
 #define VAL_H
 
 #include <iostream>
+#include <stdlib.h>
+#include <fstream>
+#include <stdio.h>
+#include <dirent.h>
 #include <string>
-#include <vector>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "parser.c"
 #include "sys.c"
 
@@ -52,6 +58,8 @@ int ie;
 #define sbi "~sb"
 #define sdi "~sd"
 #define sei "~se"
+
+#define fos "fos"
 
 
 string cells[10] =
@@ -120,6 +128,7 @@ void dof(string arg1, string arg2)
   {
     outf(arg1, arg2);
   }
+
   else if (arg1 == "in" && in)
   {
     inf(arg1, arg2);
@@ -128,6 +137,33 @@ void dof(string arg1, string arg2)
   {
     rff(arg2);
   }
+
+  else if (arg1 == "cd" && osf)
+  {
+    chdir(arg2.c_str());
+  }
+  else if (arg1 == "df" && osf)
+  {
+    remove(arg2.c_str());
+  }
+  else if (arg1 == "dd" && osf)
+  {
+    rmdir(arg2.c_str());
+  }
+  else if (arg1 == "mf" && osf)
+  {
+    fstream(arg2, ios::out);
+  }
+  else if (arg1 == "md" && osf)
+  {
+    mkdir(arg2.c_str(), 755);
+  }
+
+  else if (arg1 == "slp" && timef)
+  {
+    usleep(stoi(arg2));
+  }
+
   else
   {
     printf("[ ERR ] Konnte die Aufgabe \"%s\" nicht finden! (DO)\n", arg1.c_str());

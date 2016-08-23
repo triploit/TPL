@@ -6,12 +6,13 @@ Sie ähnelt einem Assemblerdialekt, hat jedoch nicht wirklich viel mit Assembler
 
 Kapitel dieser Readme:
 > 	Hallo Welt
->      Mov & Speicher
+>      Mov, Speicher und Anderes
 > 	Includes
 >      Do-Anweisung
 > 	Input vom User
 > 	Run-Anweisung und Punkte
 > 	If-Anweisung
+>      Das Dateisystem
 
 ###**Hallo Welt**
 
@@ -174,6 +175,67 @@ Beim String ist es das gleiche, es gibt keinen Unterschied:
       mov "11",~sa;
       add "1",~sb;
       eq ~sa!~sb,main;
+
+###**Das Dateisystem**
+
+**Benötigtes Include: **`[use] os;`
+
+####**Dateien erstellen und löschen**
+
+**Erstellen**
+Um eine datei zu erstellen, benutzen wir die Do-Anweisung. Dies geht mit
+
+    do mf,dateiname.txt;
+Hier ist wohl nicht viel zu erklären, außer das mit MF, "make file" gemeint ist. Dies ist einfach zu merken. Statt dem Dateinamen könne auch gleich Verzeichnisse angegeben werden:
+
+    do mf,/home/user/dateiname.txt;
+Es ist dabei, darauf zu achten, das keine Anführungszeichen (`"`) im Namen stehen. Auch bei der Anweisung darf niemals so geschrieben werden:
+
+    do mf,"dateiname.txt;"
+Das wäre falsch, ohne Anführungszeichen, wäre es richtig.
+
+**Löschen**
+
+Eine Datei löscht du nach dem gleichen Prinzip, bloß mi der Anweisung "df" und nicht "mf":
+
+    do df,dateiname.txt
+Auch hier kann wieder ein Verzeichnispfad angegeben werden, der zu einer Datei zeigt:    
+
+    do df,/home/user/dateiname.txt;
+"df" steht hierbei für "delete file".
+
+####**Ordner erstellen und löschen**
+
+Hier gilt das gleiche wie bei den Dateien, bloß das statt "mf" und "df", "md" und "dd" verwendet werden:
+
+**Erstellen**
+
+    do md,ordnername;
+Auch hier kann wieder ein Pfad angegeben werden:
+
+    do md,/home/user/ordnername
+
+**Löschen**
+
+    do dd,ordnername;
+Auch hier kann wieder ein Pfad angegeben werden:
+
+    do dd,/home/user/ordnername;
+
+####**Das Verzeichnis wechseln**
+
+Hier wird auch nur ein kleiner Befehl in der Do-Anweisung genommen, er nennt sich "cd":
+
+    do cd,/pfad/zum/verzeichnis;
+
+####**Das Betriebssystem ermitteln**
+
+Um das Betriebssystem zu ermitteln, gibt es eine Umgebungsvariable, die nur lesbar ist. Sie wird zum schreiben nicht gefunden und deren Wert ist nur für einen String sichtbar.
+
+Um den Namen des Systems nun in eine Variable zu speichern, nutzen wir diesen Befehl:
+
+    mov fos,~sa;
+Damit wird der Name das Betriebssystems in die Variable ~sa gespeichert. Es ist natürlich wie immer jede andere Variable verwendbar (außer vom Typ Integer).
 
 ###**Anmerkungen**
 
