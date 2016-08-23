@@ -128,16 +128,14 @@ void dof(string arg1, string arg2)
   {
     outf(arg1, arg2);
   }
-
-  else if (arg1 == "in" && in)
+  else if (arg1 == "in")
   {
     inf(arg1, arg2);
   }
-  else if (arg1 == "rf" && in)
+  else if (arg1 == "rf" && osf)
   {
     rff(arg2);
   }
-
   else if (arg1 == "cd" && osf)
   {
     chdir(arg2.c_str());
@@ -158,12 +156,10 @@ void dof(string arg1, string arg2)
   {
     mkdir(arg2.c_str(), 755);
   }
-
   else if (arg1 == "slp" && timef)
   {
     usleep(stoi(arg2));
   }
-
   else
   {
     printf("[ ERR ] Konnte die Aufgabe \"%s\" nicht finden! (DO)\n", arg1.c_str());
@@ -299,8 +295,20 @@ void inf(string arg1, string arg2)
 {
   if (arg2 == iai)
     cin >> ia;
+  else if (arg2 == ibi)
+    cin >> ib;
+  else if (arg2 == idi)
+    cin >> id;
+  else if (arg2 == iei)
+    cin >> ie;
   else if (arg2 == sai)
     getline(cin, sa);
+  else if (arg2 == sbi)
+    getline(cin, sb);
+  else if (arg2 == sdi)
+    getline(cin, sd);
+  else if (arg2 == sei)
+    getline(cin, se);
   else
     cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden werden! (IN)" << endl;
 }

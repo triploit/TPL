@@ -20,22 +20,22 @@ void use(string arg1, string arg2)
   else if (arg1 == "file" || arg2 == "file")
   {
     filef = true;
-    //printf("[ SYS ] IN wurde eingebungden!\n");
+    //printf("[ SYS ] FILE wurde eingebungden!\n");
   }
   else if (arg1 == "math" || arg2 == "math")
   {
     math = true;
-    //printf("[ SYS ] IN wurde eingebungden!\n");
+    //printf("[ SYS ] MATH wurde eingebungden!\n");
   }
   else if (arg1 == "os" || arg2 == "os")
   {
     osf = true;
-    //printf("[ SYS ] IN wurde eingebungden!\n");
+    //printf("[ SYS ] OS wurde eingebungden!\n");
   }
   else if (arg1 == "time" || arg2 == "time")
   {
     timef = true;
-    //printf("[ SYS ] IN wurde eingebungden!\n");
+    //printf("[ SYS ] TIME wurde eingebungden!\n");
   }
   else
   {

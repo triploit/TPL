@@ -1,6 +1,7 @@
-[use] out;
-[use] in;
-[use] os;
+[use]out
+[use]in;
+
+do in,+id;
 
 {main}
   do    out,endline;
@@ -8,7 +9,7 @@
   mov   IB:$,~sb;
 
   do    out,~sa;
-  mov   4,+ia;
+  mov   +id,+ia;
   do    out,+ia;
 
   do    out,endline;
@@ -19,7 +20,6 @@
   do    out,endline;
   eq    +ib!+ia,nein;
   eq    +ib=+ia,ja;
-  end;
 
 {nein}
   mov   "IB$ist$nicht$so$groß$wie$IA!",~sd;
