@@ -4,15 +4,15 @@
 TPL ist die weitentwickelste Programmiersprache von all den Interpretern bisher. Obwohl sie den Titel "Programming Language" enthält, ist sie nicht wirklich eine Programmier, sondern eher eine Skriptsprache.
 Sie ähnelt einem Assemblerdialekt, hat jedoch nicht wirklich viel mit Assembler gemeinsam.
 
-Kapitel dieser Readme:
-1.	Hallo Welt
-2.  Mov, Speicher und Anderes
-3. 	Includes
-4.  Do-Anweisung
-5. 	Input vom User
-6. 	Run-Anweisung und Punkte
-7. 	If-Anweisung
-8.  Das Dateisystem
+Kapitel dieser Readme:  
+1.	Hallo Welt  
+2.  Mov, Speicher und Anderes  
+3. 	Includes  
+4.  Do-Anweisung  
+5. 	Input vom User  
+6. 	Run-Anweisung und Punkte  
+7. 	If-Anweisung  
+8.  Das Dateisystem  
 
 ###**Hallo Welt**
 
