@@ -10,6 +10,7 @@ bool out;
 bool in;
 bool filef;
 bool math;
+int lasti;
 
 void setI(int i);
 void gotof(string m);
@@ -228,7 +229,7 @@ void mov(string arg1, string arg2)
         else
           val = arg1;
 
-        replace(val, "$", " ");
+        for (int i = 0; i < val.length(); i++) { replace(val, "\\", "\\\\\\");replace(val, "$", " ");replace(val, "\"", "");replace(val, "\\\\\\", "\"");replace(val, "\\n", "\n"); }
         System.mvIC(0, arg2, val);
         //printf("[ MOV ]:[ STR ] \"%d\" IN \"%s\"\n", val, arg2.c_str());
     }
@@ -296,7 +297,7 @@ void addf(string arg1, string arg2)
         else
           val = arg1;
 
-        replace(val, "$", " ");
+        for (int i = 0; i < val.length(); i++) { replace(val, "\\", "\\\\\\");replace(val, "$", " ");replace(val, "\"", "");replace(val, "\\\\\\", "\"");replace(val, "\\n", "\n"); }
         System.mvIC(0, arg2, val);
         //printf("\n[ ADD ]:[ STR ] \"%s\" TO \"%s\"\n", val.c_str(), arg2.c_str());
     }
@@ -368,7 +369,8 @@ void remf(string arg1, string arg2)
           val = arg1;
         //printf("[ ADD ]:[ STR ] V: %s\n", System.getCellValueStr(arg2).c_str());
 
-        replace(val, "$", " ");
+        for (int i = 0; i < val.length(); i++) { replace(val, "\\", "\\\\\\");replace(val, "$", " ");replace(val, "\"", "");replace(val, "\\\\\\", "\"");replace(val, "\\n", "\n"); }
+
         System.rmIC(0, arg2, val);
         //printf("\n[ ADD ]:[ STR ] \"%s\" TO \"%s\"\n", val.c_str(), arg2.c_str());
     }
@@ -416,6 +418,8 @@ void gotof(string m)
 
   for (int i = 0; i < gtv.size(); i++)
   {
+    lasti = System.var.i;
+
     string marke = gtv[i].substr(0, gtnv[0].size());
     string num = gtv[i].substr(gtnv[0].size()+2, gtv[i].size());
 
@@ -430,7 +434,12 @@ void gotof(string m)
       //printf("[ SYS ] %s != %s\n", gtnv[0].c_str(), marke.c_str());
     }
   }
-  printf("[ ERR ] Funktion \"%s\" nicht gefunden! (EQ/GT)", gtnv[0].c_str());
+  printf("[ ERR ] Funktion \"%s\" nicht gefunden! (EQ/GT)\n", gtnv[0].c_str());
+}
+
+void rtrnf(string arg1, string arg2)
+{
+  System.var.i = lasti;
 }
 
 #endif

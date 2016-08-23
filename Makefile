@@ -3,15 +3,16 @@ CC = g++
 
 compile: $(OBJ)
 	@echo [CPP] Link tpl...
-	@$(CC) -fpermissive -W -o tpl tpl.o
+	@$(CC) -fpermissive -W -w -o tpl tpl.o
 	@echo [CPP] Finished!
 	@echo "–––––––––––––––––––––––––––"
 	@rm tpl.o
 
 tpl.o:
 	@clear
+	@echo "–––––––––––––––––––––––––––"
 	@echo [CPP] Compile tpl...
-	@$(CC) -fpermissive -W -c tpl.cpp
+	@$(CC) -fpermissive -W -w -c tpl.cpp
 	@echo [CPP] Finished!
 	@echo "–––––––––––––––––––––––––––"
 

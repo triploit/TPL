@@ -52,6 +52,12 @@ int parse_code(char code[])
     toupper(code[i]);
     if (code[i] == ' ' || code[i] == ']' || code[i] == '\t' || code[i] == ';' || code[i] == '\n' || code[i] == '@' || code[i] == ',' || code[i] == '\0' || code[i] == '  ')
     {
+      int a = i + 1;
+      for (a; code[a] == ' ' || code[a] == '\t' || code[a] == ';' || code[a] == '\n' || code[a] == '@' || code[a] == ',' || code[a] == '\0' || code[a] == '  '; a++)
+      {
+        i++;
+      }
+
       replace(c, "[", "");
       cmds.push_back(c);
       c = "";
@@ -76,25 +82,38 @@ int execute(string code, vector<string> cmds)
 
   for (System.var.i; System.var.i < cmds.size(); System.var.i++)
   {
-      if (cmds[System.var.i] == " " || cmds[System.var.i] == "" || cmds[System.var.i] == "\0" || cmds[System.var.i] == "\n")
+    if (cmds[System.var.i].substr(0, 1) == "{")
+    {
+      string s = cmds[System.var.i];
+      char code[cmds[System.var.i].size()+1];
+      strcpy(code, s.c_str());
+      string str;
+
+      for (int x = 1; code[x] != '}' && x < cmds.size(); x++)
+      {
+        str += code[x];
+      }
+
+      string marke = str+"°"+to_string(System.var.i);
+      //printf("[ SYS ] Marke gefunden: %s\n", marke.c_str());
+      gtv.push_back(marke);
+    }
+  }
+
+  System.var.i = 0;
+
+  for (System.var.i; System.var.i < cmds.size(); System.var.i++)
+  {
+      vector<string> noth;
+      noth = split("  ", ' ');
+
+      if (cmds[System.var.i] == " " || cmds[System.var.i] == noth[0] || cmds[System.var.i] == "" || cmds[System.var.i] == "\0" || cmds[System.var.i] == "\n")
       {
         //System.var.i++;
       }
-      else if (cmds[System.var.i].substr(0, 1) == "{")
+      else if (cmds[System.var.i] == noth[0] || cmds[System.var.i] == noth[1] || cmds[System.var.i] == "\0")
       {
-        string s = cmds[System.var.i];
-        char code[cmds[System.var.i].size()+1];
-        strcpy(code, s.c_str());
-        string str;
-
-        for (int x = 1; code[x] != '}' && x < cmds.size(); x++)
-        {
-          str += code[x];
-        }
-
-        string marke = str+"°"+to_string(System.var.i);
-        //printf("[ SYS ] Marke gefunden: %s\n", marke.c_str());
-        gtv.push_back(marke);
+        printf("[ SYS ] NICHTS GELÖSCHT!\n");
       }
       else
       {

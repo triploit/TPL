@@ -21,6 +21,7 @@
 void eqf(string arg1, string arg2);
 void inf(string arg1, string arg2);
 void remf(string arg1, string arg2);
+void rtrnf(string arg1, string arg2);
 
 void pl(string arg1, string arg2);
 void min(string arg1, string arg2);
@@ -86,13 +87,14 @@ public:
     kwords_str.push_back("end");
     kwords_str.push_back("eq");
     kwords_str.push_back("rem");
+    kwords_str.push_back("run");
     //kwords_str.push_back("pl");
     //kwords_str.push_back("min");
     //kwords_str.push_back("ml");
     //kwords_str.push_back("gtl");
   }
 
-  void (*kwords_func[12])(string arg1, string arg2) =
+  void (*kwords_func[10])(string arg1, string arg2) =
   {
     &mov,
     &use,
@@ -101,7 +103,8 @@ public:
     &del,
     &quit,
     &eqf,
-    &remf
+    &remf,
+    &gotof
     //&pl,
     //&min,
     //&ml,
