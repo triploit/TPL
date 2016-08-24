@@ -18,7 +18,7 @@ Kapitel dieser Readme:
 
 Ein Hallo Welt Programm würde bestenfalls so aussehen:
 
-    [use] out;
+    [use] out,A;
 
     {main}
       mov "Hallo$Welt",~sa
@@ -85,13 +85,14 @@ Hier wird einfach ein "!" an das Ende, dem Wert, der Zelle ~sa angehängt. Wäre
 
 Die Funktion out ist nicht von Anfang an eingebunde, sie wird erst mit dem benutzen von
 
-    [use] out;
-am Anfang der Datei nutzbar gemacht. Wenn dies nicht passiert, wird der Interpreter out nicht erkennen.
+    [use] out,A;
+am Anfang der Datei nutzbar gemacht. Wenn dies nicht passiert, wird der Interpreter "out" nicht erkennen.
+Das "A" steht für ALL, wenn man dies nicht tut, meckert der Interpreter (ganz egoistisch) rum.
 
 ####**Weitere Includes**
 Es gibt noch eine weitere Funktion die inkludiert werden kann:
 
-    [use] in;
+    [use] in,A;
 Damit wird die Funktion "in" eingebunden und kann genutzt werden.
 
 ### **Do-Anweisung**
@@ -188,7 +189,7 @@ Statt einem "!", kann aber natürlich auch ein "=" für Gleichheit, ein "<" um z
 
 ###**Das Dateisystem**
 
-**Benötigtes Include: **`[use] os;`
+**Benötigtes Include: **`[use] os,A;`
 
 ####**Dateien erstellen und löschen**
 

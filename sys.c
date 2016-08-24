@@ -13,6 +13,7 @@ bool math;
 bool osf;
 bool timef;
 
+bool strin;
 int lasti;
 
 void setI(int i);

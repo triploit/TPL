@@ -1,5 +1,5 @@
-#ifndef QUITE
-#define QUITE
+#ifndef QSUITE
+#define QUSITE
 
 #include <iostream>
 using namespace std;
@@ -9,4 +9,4 @@ void quit()
   exit(0);
 }
 
-#endif QUITE
+#endif QUSITE

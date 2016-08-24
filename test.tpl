@@ -1,6 +1,6 @@
-[use] out
-[use] in;
-[use] os;
+[use] out,A;
+[use] in,A;
+[use] os,A;
 
 {init}
   mov   9,+ie;

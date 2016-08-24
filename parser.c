@@ -50,11 +50,15 @@ int parse_code(char code[])
   for (int i = 0; code[i] != '\0'; i++)
   {
     toupper(code[i]);
-    if (code[i] == ' ' || code[i] == ']' || code[i] == '\t' || code[i] == ';' || code[i] == '\n' || code[i] == '@' || code[i] == ',' || code[i] == '\0' || code[i] == '  ')
+    if (code[i] == ' ' || code[i] == ']' || code[i] == '\t' || code[i] == ';' || code[i] == '\n' || code[i] == '@' || code[i] == ',' || code[i] == '\0')
     {
       int a = i + 1;
-      for (a; code[a] == ' ' || code[a] == '\t' || code[a] == ';' || code[a] == '\n' || code[a] == '@' || code[a] == ',' || code[a] == '\0' || code[a] == '  '; a++)
+      for (a; code[a] == ' ' || code[a] == '\t' || code[a] == ';' || code[a] == '\n' || code[a] == '@' || code[a] == ',' || code[a] == '\0'; a++)
       {
+        //if (strin)
+        //{
+        //  c += code[i];
+        //}
         i++;
       }
 
@@ -64,6 +68,13 @@ int parse_code(char code[])
     }
     else
     {
+      //if (code[i] == '\"')
+      //{
+      //  if (strin)
+      //    strin = false;
+      //  else
+      //    strin = true;
+      //}
       c += code[i];
     }
   }
@@ -125,7 +136,16 @@ int execute(string code, vector<string> cmds)
             {
 
               string arg = System.getArgumentAI(cmds,System.var.i);
-              string arg1 = System.getArgumentAI(cmds,System.var.i);
+              string arg1 = "NOTH";
+
+              if (cmds[System.var.i] != "use")
+              {
+                arg1 = System.getArgumentAI(cmds,System.var.i);
+              }
+              else
+              {
+                System.var.i = System.var.i + 1;
+              }
 
               //printf("[ System ]    ->    Arguments: %s, %s\n", arg.c_str(), arg1.c_str());
               Kwords.kwords_func[z](arg,arg1);

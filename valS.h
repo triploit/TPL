@@ -228,21 +228,21 @@ void eqf(string arg1, string arg2)
     sarg = split(arg1, '<');
     kl = true;
 
-    sar1 = "e";
-    sar2 = "ea";
+    sar1 = "01";
+    sar2 = "1";
 
-    iar1 = 1;
-    iar2 = 2;
+    iar1 = 0;
+    iar2 = 1;
   }
   else if (arg1.find(">") != string::npos)
   {
     sarg = split(arg1, '>');
     gr = true;
 
-    sar1 = "ea";
-    sar2 = "e";
+    sar1 = "01";
+    sar2 = "1";
 
-    iar1 = 2;
+    iar1 = 0;
     iar2 = 1;
   }
   else
@@ -297,11 +297,11 @@ void eqf(string arg1, string arg2)
     if (sar1 != sar2 && iar1 != iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE (EQ)\n");
+      //printf("[ SYS ] TRUE (EQ)");
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)\n");
+      //printf("[ SYS ] FALSE (EQ)");
     }
   }
   else if (gr)
@@ -309,11 +309,11 @@ void eqf(string arg1, string arg2)
     if (sar1 > sar2 && iar1 > iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE %d %d GRÖßER(EQ)\n", iar1, iar2);
+      printf("[ SYS ] TRUE %d %d GRÖßER(EQ)", iar1, iar2);
     }
     else
     {
-      //printf("[ SYS ] FALSE GRÖßER (EQ)\n");
+      //printf("[ SYS ] FALSE (EQ)");
     }
   }
   else if (kl)
@@ -321,11 +321,11 @@ void eqf(string arg1, string arg2)
     if (sar1 < sar2 && iar1 < iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE %d %d (EQ)\n", iar1, iar2);
+      //printf("[ SYS ] TRUE %d %d (EQ)", iar1, iar2);
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)\n");
+      //printf("[ SYS ] FALSE (EQ)");
     }
   }
   else
@@ -333,11 +333,11 @@ void eqf(string arg1, string arg2)
     if (sar1 == sar2 && iar1 == iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE (EQ)\n");
+      //printf("[ SYS ] TRUE (EQ)");
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)\n");
+      //printf("[ SYS ] FALSE (EQ)");
     }
   }
 
