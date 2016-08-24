@@ -254,7 +254,7 @@ void mov(string arg1, string arg2)
         else
           val = arg1;
 
-        for (int i = 0; i < val.length(); i++) { replace(val, "\\", "\\\\\\");replace(val, "$", " ");replace(val, "\"", "");replace(val, "\\\\\\", "\"");replace(val, "\\n", "\n"); }
+        for (int i = 0; i < val.length(); i++) { replace(val, "\\$", "\\\\\\\\\\");replace(val, "\\", "\\\\\\");replace(val, "$", " ");replace(val, "\"", "");replace(val, "\\\\\\", "\"");replace(val, "\\n", "\n"); replace(val, "\\\\\\\\\\", "$"); }
         System.mvIC(0, arg2, val);
         //printf("[ MOV ]:[ STR ] \"%d\" IN \"%s\"\n", val, arg2.c_str());
     }

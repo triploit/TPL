@@ -107,6 +107,12 @@ Danach wird Zelle ~sa ausgegeben. Es muss jedoch darafu geachtet werden, das Out
 
 Hier kann statt Zelle ~sa, auch wieder jede andere beliebige Zelle genommen werden. Das ist überall so. Genauso kann man hier auch Zellen vom Typ Integer (+ia, +ib, +id oder +ie) verwenden.
 
+Um eine neue Zeile zu beginnen, benutzen wir statt der Zelle ein "endline". Hier ein Beispiel dafür:
+
+    do out,endline
+Dies gibt eine neue Zeile aus.
+
+
 ###**Input vom User**
 
 Um Input entgegenzunehmen, müssen wir die Funktion IN einbinden. Siehe dazu **Includes**.
