@@ -3,13 +3,18 @@
 [use] os,A;
 
 {init}
-  mov   9,+ie;
+  mov   30,+ie;
   mov   "Gib$eine$Zahl$ein:$",~sa;
   do    out,~sa;
   do    in,+id;
   eq    +id<+ie,main;
   eq    +id=+ie,exit;
   eq    +id>+ie,exit;
+
+  mov   "Kein$IF$hat$gestimmt!",~sa
+  do    out,~sa
+  do    out,endline
+
   end;
 
 {main}
