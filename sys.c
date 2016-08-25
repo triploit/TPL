@@ -439,7 +439,7 @@ void gotof(string m)
 {
   //printf("[ SYS ] JMP TO {%s}! (EQ/GT)\n", m.c_str());
   vector<string> gtnv;
-  gtnv = split(m, '°');
+  gtnv = split(m, '*');
 
   for (int i = 0; i < gtv.size(); i++)
   {

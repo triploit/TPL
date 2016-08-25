@@ -105,7 +105,7 @@ int execute(string code, vector<string> cmds)
         str += code[x];
       }
 
-      string marke = str+"°"+to_string(System.var.i);
+      string marke = str+"*"+to_string(System.var.i);
       //printf("[ SYS ] Marke gefunden: %s\n", marke.c_str());
       gtv.push_back(marke);
     }

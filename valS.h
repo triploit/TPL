@@ -154,7 +154,7 @@ void dof(string arg1, string arg2)
   }
   else if (arg1 == "md" && osf)
   {
-    mkdir(arg2.c_str(), 755);
+    mkdir(arg2.c_str());//, 755);
   }
   else if (arg1 == "slp" && timef)
   {

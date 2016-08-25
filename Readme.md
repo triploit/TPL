@@ -14,6 +14,7 @@ Kapitel dieser Readme:
 * 7. 	If-Anweisung  
 * 8.  Das Dateisystem  
 
+----
 ###**Hallo Welt**
 
 Ein Hallo Welt Programm würde bestenfalls so aussehen:
@@ -30,6 +31,7 @@ Dieses Programm bindet "out" ein und deklariert der Punkt "main". Danach verschi
 
 "end" beendet das Programm.
 
+----
 ###**Mov und Speicher**
 
 ####**Speicher**
@@ -81,6 +83,7 @@ Wenn die Zelle +ia den Wert 142 beinhalten würde, wäre es jetzt 143. Bei Strin
     add "!",~sa
 Hier wird einfach ein "!" an das Ende, dem Wert, der Zelle ~sa angehängt. Wäre der Wert "Hallo Welt" in der Zelle ~sa, wäre es jetzt "Hallo Welt!" (also ein "!" am Ende mehr).
 
+----
 ###**Includes**
 
 Die Funktion out ist nicht von Anfang an eingebunde, sie wird erst mit dem benutzen von
@@ -113,6 +116,7 @@ Um eine neue Zeile zu beginnen, benutzen wir statt der Zelle ein "endline". Hier
 Dies gibt eine neue Zeile aus.
 
 
+----
 ###**Input vom User**
 
 Um Input entgegenzunehmen, müssen wir die Funktion IN einbinden. Siehe dazu **Includes**.
@@ -124,6 +128,7 @@ Dann wird die Funktion Input ausgeführt und Speichert den Wert in die Zelle ~sd
     do in,+ie
 Das bedeutet, dass hier eine Zahl entgegengenommen wird und dann wird die Eingabe in die Zelle +ie gespeichert.
 
+----
 ###**Run Anweisung und Punkte**
 
 ####**Punkte**
@@ -154,6 +159,7 @@ Wenn eine deklaration doppelt vorkommt, wird der nächst "höhere" Punkt angespr
       run Name;
 Nachdem "run Punkt;" ausgeführt wird und der Interpreter zu "Punkt" gesprungen ist, wird die zweite, untere deklaration von "Name" ausgeführt, da sieh am nächsten über "Punkt" deklariert wurde.
 
+----
 ###**If Anweisung**
 
 Die If-Anweisung müsste jeder Programmierer kennen. Hier ist sie etwas anders:
@@ -193,6 +199,7 @@ Beim String ist es das gleiche, es gibt keinen Unterschied:
 
 Statt einem "!", kann aber natürlich auch ein "=" für Gleichheit, ein "<" um zu testen ob das erste Objekt kleiner und ein ">" um zu testen ob das erste Objekt größer ist.
 
+----
 ###**Das Dateisystem**
 
 **Benötigtes Include: **`[use] os,A;`
@@ -254,6 +261,7 @@ Um den Namen des Systems nun in eine Variable zu speichern, nutzen wir diesen Be
     mov fos,~sa;
 Damit wird der Name das Betriebssystems in die Variable ~sa gespeichert. Es ist natürlich wie immer jede andere Variable verwendbar (außer vom Typ Integer).
 
+----
 ###**Anmerkungen**
 
 Am Ende eines Befehls müssen keine Semikolons stehen, sieht aber besser aus und empfehle ich jedem. Die Formatierung sollte auch beachtet werden um die lesbarkeit des Quellcodes zu steigern.
