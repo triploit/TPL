@@ -17,7 +17,7 @@ void use(string arg1, string arg2)
   {}
   else
   {
-    printf("[ SYS ] Warum steht da als Argument 2 von Input kein \"A\"?!\n");
+    printf("[ SYS ] Warum steht da als Argument 2 kein \"A\"?! (USE)\n");
   }
 
   // printf("Argument: ARG1: %s ARG2: %s\n", arg1.c_str(), arg2.c_str());

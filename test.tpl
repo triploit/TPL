@@ -4,7 +4,7 @@
 
 {init}
   mov   9,+ie;
-  mov   "Gib$eine$Zahl$ein$(\\n9):$",~sa;
+  mov   "Gib$eine$Zahl$ein$(9):$",~sa;
 
   do    out,~sa;
   do    in,+id;

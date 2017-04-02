@@ -23,17 +23,20 @@
 #include "out.h"
 #include "add.h"
 
-#include "a1z26.h"
 void eqf(string arg1, string arg2);
 void inf(string arg1, string arg2);
 void remf(string arg1, string arg2);
+void addf(string arg1, string arg2);
+void mulf(string arg1, string arg2);
+void divf(string arg1, string arg2);
 void rtrnf(string arg1, string arg2);
+void ltf(string arg1, string arg2);
 
-void pl(string arg1, string arg2);
-void min(string arg1, string arg2);
-void ml(string arg1, string arg2);
-void gtl(string arg1, string arg2);
+void rff(string arg1, string arg2);
+void ltif(string arg1, string arg2);
+void ltsf(string arg1, string arg2);
 
+#include "a1z26.h"
 vector<string> gtv;
 #endif
 
@@ -96,13 +99,16 @@ public:
     kwords_str.push_back("eq");
     kwords_str.push_back("rem");
     kwords_str.push_back("run");
-    //kwords_str.push_back("pl");
-    //kwords_str.push_back("min");
+    kwords_str.push_back("mul");
+    kwords_str.push_back("div");
+    kwords_str.push_back("rf");
+    kwords_str.push_back("lts");
+    kwords_str.push_back("lti");
     //kwords_str.push_back("ml");
     //kwords_str.push_back("gtl");
   }
 
-  void (*kwords_func[10])(string arg1, string arg2) =
+  void (*kwords_func[15])(string arg1, string arg2) =
   {
     &mov,
     &use,
@@ -112,7 +118,12 @@ public:
     &quit,
     &eqf,
     &remf,
-    &gotof
+    &gotof,
+    &mulf,
+    &divf,
+    &rff,
+    &ltsf,
+    &ltif
     //&pl,
     //&min,
     //&ml,
@@ -132,33 +143,157 @@ void dof(string arg1, string arg2)
   {
     inf(arg1, arg2);
   }
+  else if (arg1 == "wt" && osf)
+  {
+    int wait = stoi(arg2);
+    sleep(wait);
+  }
   else if (arg1 == "rf" && osf)
   {
-    rff(arg2);
+    string name;
+
+      if (arg2 == "~sa")
+        name = sa;
+      else if (arg2 == "~sb")
+        name = sb;
+      else if (arg2 == "~sd")
+        name = sd;
+      else if (arg2 == "~se")
+        name = se;
+      else
+        name = arg2;
+
+    string file = name;
+    rff(file, "");
   }
   else if (arg1 == "cd" && osf)
   {
-    chdir(arg2.c_str());
+    string name;
+
+      if (arg2 == "~sa")
+        name = sa;
+      else if (arg2 == "~sb")
+        name = sb;
+      else if (arg2 == "~sd")
+        name = sd;
+      else if (arg2 == "~se")
+        name = se;
+      else
+        name = arg2;
+    chdir(name.c_str());
   }
   else if (arg1 == "df" && osf)
   {
-    remove(arg2.c_str());
+    string name;
+
+      if (arg2 == "~sa")
+        name = sa;
+      else if (arg2 == "~sb")
+        name = sb;
+      else if (arg2 == "~sd")
+        name = sd;
+      else if (arg2 == "~se")
+        name = se;
+      else
+        name = arg2;
+
+    remove(name.c_str());
   }
-  else if (arg1 == "dd" && osf)
+  else if (arg1 == "ld" && osf)
   {
-    rmdir(arg2.c_str());
+    string name;
+
+    if (arg2 == "~sa")
+      name = sa;
+    else if (arg2 == "~sb")
+      name = sb;
+    else if (arg2 == "~sd")
+      name = sd;
+    else if (arg2 == "~se")
+      name = se;
+    else
+      name = arg2;
+
+    rmdir(name.c_str());
   }
   else if (arg1 == "mf" && osf)
   {
-    fstream(arg2, ios::out);
+    string name;
+
+      if (arg2 == "~sa")
+        name = sa;
+      else if (arg2 == "~sb")
+        name = sb;
+      else if (arg2 == "~sd")
+        name = sd;
+      else if (arg2 == "~se")
+        name = se;
+      else
+        name = arg2;
+    fstream(name, ios::out);
   }
   else if (arg1 == "md" && osf)
   {
-    mkdir(arg2.c_str());//, 755);
+    string name;
+
+      if (arg2 == "~sa")
+        name = sa;
+      else if (arg2 == "~sb")
+        name = sb;
+      else if (arg2 == "~sd")
+        name = sd;
+      else if (arg2 == "~se")
+        name = se;
+      else
+        name = arg2;
+    #ifdef _WIN32
+    mkdir(name.c_str());
+    #elif _WIN64
+    mkdir(name.c_str());
+    #elif __unix || __unix__
+    mkdir(name.c_str(), 755);
+    #elif __APPLE__ || __MACH__
+    mkdir(name.c_str(), 755);
+    #elif __linux__
+    mkdir(name.c_str(), 755);
+    #elif __FreeBSD__
+    mkdir(name.c_str(), 755);
+    #else
+    mkdir(name.c_str(), 755);
+    #endif
+  }
+  else if (arg1 == "etr" && in)
+  {
+    for (int i = stoi(arg2); i > 0; i--)
+      cin.get();
+  }
+  else if (arg1 == "cls" && out)
+  {
+    for (int i = stoi(arg2); i > 0; i--)
+    {
+      system("clear");
+    }
   }
   else if (arg1 == "slp" && timef)
   {
-    usleep(stoi(arg2));
+    sleep(stoi(arg2));
+  }
+  else if (arg1 == "rnd")
+  {
+    int num;
+    srand (time(NULL));
+    num = rand();
+
+    if (arg2 == iai)
+      ia = num;
+    else if (arg2 == ibi)
+      ib = num;
+    else if (arg2 == idi)
+      id = num;
+    else if (arg2 == iei)
+      ie = num;
+    else
+      cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden oder besdhrieben werden! (RND)" << endl;
   }
   else
   {
@@ -190,7 +325,7 @@ void outf(string arg1, string arg2)
     printf("%s", se.c_str());
 
   else
-    cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden werden! (OUT)" << endl;
+    cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden werden! (DO/OUT)" << endl;
 }
 
 void eqf(string arg1, string arg2)
@@ -297,18 +432,18 @@ void eqf(string arg1, string arg2)
     if (sar1 != sar2 && iar1 != iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE (EQ)");
+      //printf("[ SYS ] TRUE (EQ)\n");
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)");
+      //printf("[ SYS ] FALSE (EQ)\n");
     }
   }
   else if (gr)
   {
     if (sar1 > sar2 && iar1 > iar2)
     {
-      //printf("[ SYS ] TRUE %d %d GRÖßER(EQ)", iar1, iar2);
+      //printf("[ SYS ] TRUE %d %d GRÖßER(EQ)\n", iar1, iar2);
       gotof(arg2);
     }
     else
@@ -321,11 +456,11 @@ void eqf(string arg1, string arg2)
     if (sar1 < sar2 && iar1 < iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE %d %d (EQ)", iar1, iar2);
+      //printf("[ SYS ] TRUE %d %d (EQ)\n", iar1, iar2);
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)");
+      //printf("[ SYS ] FALSE (EQ)\n");
     }
   }
   else
@@ -333,11 +468,11 @@ void eqf(string arg1, string arg2)
     if (sar1 == sar2 && iar1 == iar2)
     {
       gotof(arg2);
-      //printf("[ SYS ] TRUE (EQ)");
+      //printf("[ SYS ] TRUE (EQ)\n");
     }
     else
     {
-      //printf("[ SYS ] FALSE (EQ)");
+      //printf("[ SYS ] FALSE (EQ)\n");
     }
   }
 
@@ -362,31 +497,27 @@ void inf(string arg1, string arg2)
   else if (arg2 == sei)
     getline(cin, se);
   else
-    cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden werden! (IN)" << endl;
-}
+    cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden werden! (DO/IN)" << endl;
 
-void pl(string arg1, string arg2)
-{
-  // PLUS
-}
+  //cout << "IA " << ia << endl;
+  //cout << "IB " << ib << endl;
+  //cout << "ID " << id << endl;
+  //cout << "IE " << ie << endl;
 
-void min(string arg1, string arg2)
-{
-  // MINUS
-}
-
-void ml(string arg1, string arg2)
-{
-  // MAL
-}
-
-void gtl(string arg1, string arg2)
-{
-  // GETEIELT
+  //cout << "SA " << sa << endl;
+  //cout << "SB " << sb << endl;
+  //cout << "SD " << sd << endl;
+  //cout << "SE " << se << endl;
 }
 
 void del(string arg1, string arg2)
 {
+  if (arg2 != "0")
+  {
+    cout << "[ ERR ] Als Argument 2 muss 0 stehen! (DD)\nProgramm abgebrochen." << endl;
+    exit(1);
+  }
+
   if (arg1 == iai)
     ia = 0;
   else if (arg1 == ibi)
@@ -404,10 +535,8 @@ void del(string arg1, string arg2)
     sd = "";
   else if (arg1 == sei)
     se = "";
-
   else
-    cout << "[ ERR ] Zelle \"" << arg2 << "\" konte nicht gefunden werden! (DEL)" << endl;
+    cout << "[ ERR ] Zelle \"" << arg1 << "\" konte nicht gefunden werden! (DD)" << endl;
 }
-
 
 #endif

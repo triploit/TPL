@@ -7,12 +7,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
-using namespace std;
 #include "sys.c"
 #include "valS.h"
+using namespace std;
+
+string afile, mfile;
 
 int execute(string code, vector<string> cmds);
-
 int print(string c, string c1 = "", string c2 = "", string c3 = "", string c4 = "", string c5 = "")
 {
   c = c+c1+c2+c3+c4+c5;
@@ -50,15 +51,20 @@ int parse_code(char code[])
   for (int i = 0; code[i] != '\0'; i++)
   {
     toupper(code[i]);
-    if (code[i] == ' ' || code[i] == ']' || code[i] == '\t' || code[i] == ';' || code[i] == '\n' || code[i] == '@' || code[i] == ',' || code[i] == '\0')
+    if (code[i] == ' ' || code[i] == ']' || code[i] == '\t' || code[i] == ';' || code[i] == '\n' || code[i] == '@' || code[i] == ',' || code[i] == '\0' || code[i] == '\"')
     {
-      int a = i + 1;
-      for (a; code[a] == ' ' || code[a] == '\t' || code[a] == ';' || code[a] == '\n' || code[a] == '@' || code[a] == ',' || code[a] == '\0'; a++)
+      if (strin)
       {
-        //if (strin)
-        //{
-        //  c += code[i];
-        //}
+        c += code[i];
+      }
+
+      int a = i + 1;
+      for (a; code[a] == ' ' || code[a] == '\t' || code[a] == ';' || code[a] == '\n' || code[a] == '@' || code[a] == ',' || code[a] == '\0' || code[a] == '\"'; a++)
+      {
+        if (strin)
+        {
+          c += code[i];
+        }
         i++;
       }
 
@@ -68,13 +74,17 @@ int parse_code(char code[])
     }
     else
     {
-      //if (code[i] == '\"')
-      //{
-      //  if (strin)
-      //    strin = false;
-      //  else
-      //    strin = true;
-      //}
+      if (code[i] == '\"' || code[i] == '"')
+      {
+        if (strin)
+        {
+          strin = false;
+        }
+        else
+        {
+          strin = true;
+        }
+      }
       c += code[i];
     }
   }
@@ -130,6 +140,7 @@ int execute(string code, vector<string> cmds)
       {
         for (int z = 0; z < 10; z++)
         {
+          string command = cmds[System.var.i];
           if (z < Kwords.kwords_str.size() && cmds[System.var.i] == Kwords.kwords_str[z])
           {
             if ((System.var.i+2) < cmds.size())
@@ -150,6 +161,12 @@ int execute(string code, vector<string> cmds)
               //printf("[ System ]    ->    Arguments: %s, %s\n", arg.c_str(), arg1.c_str());
               Kwords.kwords_func[z](arg,arg1);
             }
+            else if (command == "use" || command == "run" || command == "dd")
+            {
+              string arg = System.getArgumentAI(cmds,System.var.i);
+              Kwords.kwords_func[z](arg,"NOTHING");
+              System.var.i;
+            }
             else
             {
               Kwords.kwords_func[z]("NOTHING","NOTHING");
@@ -164,26 +181,31 @@ int execute(string code, vector<string> cmds)
   return 0;
 }
 
-void rff(string argv1)
+void rff(string arg1, string arg2)
 {
-  Kwords.initkwords();
+  char* argv[2];
+
+  argv[0] = "";
+  argv[1] = arg1.c_str();
+  //printf("[ SYS ] Führe RF aus. %s\n", argv[1]);
 
   char c;
-  FILE *datei2;
+  FILE *datei;
   char code[3000000];
 
-  datei2=fopen(argv1.c_str(), "r");
-  if(datei2 != NULL)
+  datei=fopen(argv[1], "r");
+  if(datei != NULL)
   {
-    for (int i = 0; (c=fgetc(datei2)) != EOF; i++)
+    for (int i = 0; (c=fgetc(datei)) != EOF; i++)
     {
       code[i] = c;
     }
+
     parse_code(code);
   }
   else
   {
-    printf("[ ERR ] Konnte Datei \"%s\" nicht finden bzw. öffnen! (RF)\n", argv1.c_str());
+    printf("[ SYS ] Konnte Datei \"%s\" nicht finden bzw. öffnen! (DO/RF)\n", argv[1]);
     return;
   }
   return;

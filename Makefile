@@ -26,7 +26,7 @@ windows:
 
 test: compile
 	@clear
-	@./tpl test.tpl
+	@./tpl tests/test.tpl
 
 install: compile
 	@echo "[CP] tpl /bin/"
