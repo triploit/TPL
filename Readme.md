@@ -1,7 +1,7 @@
 **TPL - Triploit Programming Language**
 ===================================
 
-TPL ist die weitentwickelste Programmiersprache von all den Interpretern bisher. Obwohl sie den Titel "Programming Language" enthält, ist sie nicht wirklich eine Programmier, sondern eher eine Skriptsprache.
+TPL ist die weitentwickelste Programmiersprache von all den Interpretern bisher(Stand X.7.2016). Obwohl sie den Titel "Programming Language" enthält, ist sie nicht wirklich eine Programmier, sondern eher eine Skriptsprache.
 Sie ähnelt einem Assemblerdialekt, hat jedoch nicht wirklich viel mit Assembler gemeinsam.
 
 Kapitel dieser Readme:  
