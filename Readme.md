@@ -267,5 +267,3 @@ Damit wird der Name das Betriebssystems in die Variable ~sa gespeichert. Es ist 
 Am Ende eines Befehls müssen keine Semikolons stehen, sieht aber besser aus und empfehle ich jedem. Die Formatierung sollte auch beachtet werden um die lesbarkeit des Quellcodes zu steigern.
 
 >**Wichtig:** Achtet auf die groß und kleinschreibung bei den Punkten, Werten, Funktionen und Zellen! Also eigentlich überall.
-
-Wenn ihr noch Fragen habt oder irgendwelche Vorschläge, was ich noch hinzufügen kann. Schreibt mir eine Nachricht auf: http://triploit.bitbucket.org/contact.html oder an die E-Mail "tristanpieper080803@gmail.com".
